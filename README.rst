@@ -8,16 +8,17 @@ Tool for live coding presentations
 
 
 *presentationlib* is a simple tool for doing presentations via the python REPL.
-It was inspired by `these <https://www.youtube.com/watch?v=j6VSAsKAj98>`_
-`two <https://www.youtube.com/watch?v=Bm96RqNGbGo>`_ talks by David Beazley.
+It was inspired by `these <https://www.youtube.com/watch?v=j6VSAsKAj98>`_ `two
+<https://www.youtube.com/watch?v=Bm96RqNGbGo>`_ talks by David Beazley.
 
-It can easily present text files, but can also execute python files in the global scope,
-so it is the same as the presenter typed in the code or imported it.
+It can easily present text files, but can also execute python files in the
+global scope, the same as if the presenter typed in the code or imported it.
 
-The usage is simple, import the ``presentation`` function, declare a mapping to configure the
-files that are included in the presentation, and run it.
+The usage is simple, import the ``presentation`` function, declare a mapping to
+configure the files that are included in the presentation, and run it.
 
-The mapping can also include a list. Then, multiple uses of it cycle through the options.
+The mapping can also include a list. Then, multiple uses of it cycle through
+the options.
 
 Usage
 -----
@@ -141,5 +142,6 @@ Configuration options
 
 * ``location``: the directory in which all filenames are searched (except for absolute paths)
 * ``use_box``: whether to put text inside an ascii box 
+* ``box_width``: the box width to use, if ``use_box`` is ``True``
 * ``banner``: printed on REPL initialization (a default banner is also provided)
 * ``heading`` and ``subheading``: ``banner`` can be a template, these are the template options
