@@ -146,3 +146,16 @@ Configuration options
 * ``box_width``: the box width to use, if ``use_box`` is ``True``
 * ``banner``: printed on REPL initialization (a default banner is also provided)
 * ``heading`` and ``subheading``: ``banner`` can be a template, these are the template options
+
+
+How does it work?
+-----------------
+
+The printing of file content when the user inputs a simple string works by
+patching ``sys.displayhook``. This is a function that is ran in the interactive
+REPL whenever a user wants to output something (not when using ``print``).
+
+The execution of the python files is made possible by using frame inspection.
+The modified displayhook gets the caller's frame, and executes the code inside
+the REPL's context. Note that any code outside an ``if __name__ == '__main__'``
+guard will be executed.
