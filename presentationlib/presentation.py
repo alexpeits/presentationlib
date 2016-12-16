@@ -18,9 +18,10 @@ old_displayhook = sys.displayhook
 
 class mod_displayhook(object):
 
-    def __init__(self, mapping, location, use_box, box_width):
+    def __init__(self, mapping, location, exec_py, use_box, box_width):
         self.mapping = mapping
         self.location = location
+        self.exec_py = exec_py
         self.use_box = use_box
         self.box_width = box_width
         self.text_width = box_width - 6
@@ -63,7 +64,7 @@ class mod_displayhook(object):
         if fp:
             with open(fp, 'r') as f:
                 text = f.read()
-            if fn.rstrip('/').endswith('.py'):
+            if fn.rstrip('/').endswith('.py') and self.exec_py:
                 exec(text, globals_, globals_)
             if wrap:
                 text = fill(text, config.TEXT_WIDTH)
@@ -78,7 +79,8 @@ class mod_displayhook(object):
 
 
 def presentation(
-        mapping, location=None, use_box=True, box_width=config.BOX_WIDTH,
+        mapping, location=None, exec_py=config.EXEC_PY,
+        use_box=True, box_width=config.BOX_WIDTH,
         banner=None, heading=None, subheading=None):
 
     slides = dict()
@@ -95,7 +97,9 @@ def presentation(
 
     location = os.path.abspath(location)
 
-    sys.displayhook = mod_displayhook(slides, location, use_box, box_width)
+    sys.displayhook = mod_displayhook(
+        slides, location, exec_py, use_box, box_width
+    )
 
     if banner is None:
         banner = config.BANNER_TEMPLATE
