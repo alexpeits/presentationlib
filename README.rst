@@ -141,6 +141,7 @@ Configuration options
 ---------------------
 
 * ``location``: the directory in which all filenames are searched (except for absolute paths)
+* ``exec_py``: whether python files are executed to make functions, classes and variables available in the REPL
 * ``use_box``: whether to put text inside an ascii box 
 * ``box_width``: the box width to use, if ``use_box`` is ``True``
 * ``banner``: printed on REPL initialization (a default banner is also provided)
