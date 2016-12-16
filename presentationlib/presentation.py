@@ -28,10 +28,13 @@ class mod_displayhook(object):
 
     def resolve(self, fn):
         if os.path.isabs(fn):
-            return fn
-        local = os.path.join(self.location, fn)
-        if os.path.exists(local):
-            return local
+            fp = fn
+        elif fn.startswith('~'):
+            fp = os.path.expanduser(fn)
+        else:
+            fp = os.path.join(self.location, fn)
+        if os.path.exists(fp):
+            return fp
         return ''
 
     def __call__(self, obj):
