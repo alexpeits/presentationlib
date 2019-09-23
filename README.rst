@@ -41,7 +41,7 @@ Usage
 
     mapping = {
         'fib': 'fib.py',
-        'lorem': {'file': 'lorem.txt', wrap: True},
+        'lorem': {'file': 'lorem.txt', 'wrap': True},
         'test': '~/file.txt',
         'multiple': [
             'fib.py',
